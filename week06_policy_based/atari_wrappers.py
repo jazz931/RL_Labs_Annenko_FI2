@@ -1,5 +1,11 @@
-""" Environment wrappers. """
+""" Atari environment wrappers for batch training and preprocessing. """
+import os
+import warnings
 from collections import defaultdict, deque
+
+# Suppress specific gymnasium/gym deprecation warnings to keep output clean
+warnings.filterwarnings("ignore", message="Gym has been unmaintained")
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import cv2
 import gymnasium as gym
@@ -7,13 +13,17 @@ import numpy as np
 from gymnasium import ObservationWrapper, RewardWrapper, Wrapper
 from gymnasium.spaces import Box
 from gymnasium.wrappers import RecordVideo
-from shimmy.atari_env import AtariEnv
 from tensorboardX import SummaryWriter
+
+# Direct integration with ALE (Arcade Learning Environment)
+# This bypasses 'shimmy' which often triggers the 'Gym has been unmaintained' warning
+import ale_py
+gym.register_envs(ale_py)
+from ale_py import AtariEnv
 
 from env_batch import ParallelEnvBatch
 
 cv2.ocl.setUseOpenCL(False)
-
 
 class EpisodicLife(Wrapper):
     """Sets done flag to true when agent dies."""
@@ -45,11 +55,7 @@ class EpisodicLife(Wrapper):
 
 
 class FireReset(Wrapper):
-    """Makes fire action when reseting environment.
-
-    Some environments are fixed until the agent makes the fire action,
-    this wrapper makes this action so that the epsiode starts automatically.
-    """
+    """Makes fire action when reseting environment."""
 
     def __init__(self, env):
         super().__init__(env)
@@ -80,8 +86,7 @@ class FireReset(Wrapper):
 
 
 class StartWithRandomActions(Wrapper):
-    """Makes random number of random actions at the beginning of each
-    episode."""
+    """Makes random number of random actions at the beginning of each episode."""
 
     def __init__(self, env, max_random_actions=30):
         super().__init__(env)
