@@ -36,11 +36,8 @@
 - [reinforce_pytorch.ipynb](week06_policy_based/reinforce_pytorch.ipynb)
 - [a2c-optional.ipynb](week06_policy_based/a2c-optional.ipynb)
 
----
-
-## В процессе выполнения
-
-- [week07_seq2seq](week07_seq2seq/)
+### [week07_seq2seq](week07_seq2seq/)
+- [practice_torch.ipynb](week07_seq2seq/practice_torch.ipynb)
 
 ---
 
