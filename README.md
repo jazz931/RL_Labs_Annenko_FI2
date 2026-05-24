@@ -13,6 +13,9 @@
 
 ## Выполненные работы
 
+### Теоретические ответы
+- [Ответы на вопросы по курсу](Анненко Михаил 3825М1ФИ2 Ответы на вопросы по предмету Обучение с подкреплением.pdf) — документ с ответами на теоретические вопросы по всем неделям
+
 ### [week01_intro](week01_intro/)
 - [seminar_gymnasium_interface.ipynb](week01_intro/seminar_gymnasium_interface.ipynb)
 - [crossentropy_method.ipynb](week01_intro/crossentropy_method.ipynb)
@@ -38,7 +41,3 @@
 
 ### [week07_seq2seq](week07_seq2seq/)
 - [practice_torch.ipynb](week07_seq2seq/practice_torch.ipynb)
-
----
-
-*Новые работы будут добавляться сюда*
